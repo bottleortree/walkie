@@ -9,8 +9,20 @@
     tools:context=".MainActivity$PlaceholderFragment">
 
     <TextView
-        android:text="@string/hello_world"
+        style="@style/LargeCounter"
+        android:id="@+id/main_text_stepcounter"
+        android:text="@string/dummy_stepcounter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
+
+    <TextView
+        style="@style/LargeLabel"
+        android:id="@+id/main_text_steplabel"
+        android:text="@string/steplabel"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/main_text_stepcounter" />
 
 </RelativeLayout>

@@ -1,8 +1,17 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="android:Theme.Holo.Light">
-        <!-- Customize your theme here. -->
+    <style name="WalkieTheme" parent="android:Theme.Holo.Light.DarkActionBar">
+
+    </style>
+    
+    <style name="LargeCounter"  parent="android:TextAppearance.Holo.Large">
+        <item name="android:textSize">96sp</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+
+    <style name="LargeLabel" parent="android:TextAppearance.Holo.Large">
+        <item name="android:textSize">32sp</item>
     </style>
 
 </resources>

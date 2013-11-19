@@ -2,7 +2,9 @@
 <resources>
 
     <string name="app_name">Walkie</string>
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+
+    <string name="dummy_stepcounter">987654</string>
+    <string name="steplabel">Today</string>
 
 </resources>
