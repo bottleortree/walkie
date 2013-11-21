@@ -6,23 +6,71 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
+    android:gravity="center"
     tools:context=".MainActivity$PlaceholderFragment">
+
+    <!--Today-->
+    <TextView
+        android:id="@+id/main_text_steplabel_day"
+        style="@style/LargeLabel"
+        android:text="@string/steplabel_day"
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content" />
 
     <TextView
         style="@style/LargeCounter"
-        android:id="@+id/main_text_stepcounter"
+        android:id="@+id/main_text_stepcounter_day"
         android:text="@string/dummy_stepcounter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true" />
+        android:layout_below="@id/main_text_steplabel_day" />
 
-    <TextView
-        style="@style/LargeLabel"
-        android:id="@+id/main_text_steplabel"
-        android:text="@string/steplabel"
-        android:layout_width="wrap_content"
+    <!--Week/Month labels-->
+    <LinearLayout
+        android:id="@+id/main_group_labels_weekmonth"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@id/main_text_stepcounter" />
+        android:layout_below="@id/main_text_stepcounter_day">
+
+        <TextView
+            android:id="@+id/main_text_steplabel_week"
+            style="@style/MediumLabel"
+            android:text="@string/steplabel_week"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5" />
+
+        <TextView
+            android:id="@+id/main_text_steplabel_month"
+            style="@style/MediumLabel"
+            android:text="@string/steplabel_month"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5" />
+
+    </LinearLayout>
+
+    <!--Week/Month counters-->
+    <LinearLayout
+        android:id="@+id/main_group_counters_weekmonth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/main_group_labels_weekmonth">
+
+        <TextView
+            style="@style/MediumCounter"
+            android:text="@string/dummy_stepcounter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"/>
+
+        <TextView
+            style="@style/MediumCounter"
+            android:text="@string/dummy_stepcounter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"/>
+    </LinearLayout>
 
 </RelativeLayout>

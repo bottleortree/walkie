@@ -4,7 +4,10 @@
     <string name="app_name">Walkie</string>
     <string name="action_settings">Settings</string>
 
-    <string name="dummy_stepcounter">987654</string>
-    <string name="steplabel">Today</string>
+    <string name="dummy_stepcounter">"??????"</string>
+
+    <string name="steplabel_day">Today</string>
+    <string name="steplabel_week">Week</string>
+    <string name="steplabel_month">Month</string>
 
 </resources>

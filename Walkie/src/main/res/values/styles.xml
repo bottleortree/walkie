@@ -4,14 +4,26 @@
     <style name="WalkieTheme" parent="android:Theme.Holo.Light.DarkActionBar">
 
     </style>
-    
-    <style name="LargeCounter"  parent="android:TextAppearance.Holo.Large">
-        <item name="android:textSize">96sp</item>
+
+    <style name="MediumLabel" parent="android:TextAppearance.Holo.Medium">
+        <item name="android:textSize">24sp</item>
         <item name="android:gravity">center_horizontal</item>
     </style>
 
     <style name="LargeLabel" parent="android:TextAppearance.Holo.Large">
-        <item name="android:textSize">32sp</item>
+        <item name="android:textSize">48sp</item>
+        <item name="android:gravity">center_horizontal</item>
     </style>
+
+    <style name="MediumCounter" parent="android:TextAppearance.Holo.Medium">
+        <item name="android:textSize">48sp</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+
+    <style name="LargeCounter" parent="android:TextAppearance.Holo.Large">
+        <item name="android:textSize">96sp</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+
 
 </resources>
