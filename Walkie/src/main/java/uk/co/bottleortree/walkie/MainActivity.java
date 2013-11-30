@@ -1,20 +1,38 @@
 package uk.co.bottleortree.walkie;
 
 import android.app.Activity;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
+import android.content.ComponentName;
+import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
-public class MainActivity extends Activity implements SensorEventListener{
+public class MainActivity extends Activity{
 
     private MainFragment mainFragment;
+    private boolean bound;
+    private StepService stepService;
 
-    private SensorManager sensorManager;
-    private int stepCount = 0;
+    private ServiceConnection serviceConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+
+            stepService = ((StepService.StepBinder)service).getService();
+            bound = true;
+            mainFragment.setStepCountDay(stepService.getStepCount());
+            mainFragment.refreshValues();
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+
+            bound = false;
+            stepService = null;
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,14 +46,20 @@ public class MainActivity extends Activity implements SensorEventListener{
                     .commit();
         }
 
-        sensorManager = (SensorManager)getSystemService(SENSOR_SERVICE);
-        sensorManager.registerListener(this, sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER), sensorManager.SENSOR_DELAY_NORMAL);
+        super.onStart();
+        startService(new Intent(this, StepService.class));
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        sensorManager.unregisterListener(this);
+    protected void onResume() {
+        super.onResume();
+        bindService(new Intent(this, StepService.class), serviceConnection, BIND_ABOVE_CLIENT);
+    }
+
+    @Override
+    protected void onPause() {
+        unbindService(serviceConnection);
+        super.onPause();
     }
 
     @Override
@@ -53,19 +77,5 @@ public class MainActivity extends Activity implements SensorEventListener{
         }
         return super.onOptionsItemSelected(item);
     }
-
-    @Override
-    public void onSensorChanged(SensorEvent event) {
-        stepCount = StepHelper.stepsFromEvent(event);
-        refreshValues();
-    }
-
-    private void refreshValues() {
-        mainFragment.setStepCountDay(stepCount);
-        mainFragment.refreshValues();
-    }
-
-    @Override
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {} // Not needed for step counters
 
 }
