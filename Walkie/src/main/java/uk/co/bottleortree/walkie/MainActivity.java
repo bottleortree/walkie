@@ -8,29 +8,30 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 public class MainActivity extends Activity{
 
     private MainFragment mainFragment;
-    private boolean bound;
-    private StepService stepService;
 
     private ServiceConnection serviceConnection = new ServiceConnection() {
+
+        private StepService stepService;
+
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
 
             stepService = ((StepService.StepBinder)service).getService();
-            bound = true;
             mainFragment.setStepCountDay(stepService.getStepCount());
             mainFragment.refreshValues();
         }
 
         @Override
         public void onServiceDisconnected(ComponentName name) {
-
-            bound = false;
             stepService = null;
+        }
+
+        public StepService getService() {
+            return stepService;
         }
     };
 
