@@ -17,8 +17,6 @@ public class StepService extends Service implements SensorEventListener{
 
     private static final int BATCH_MAX_LATENCY = 1000 * 60 * 1; // One minute
 
-    private final IBinder binder = new StepBinder();
-
     private SensorManager sensorManager;
     private int stepCount = 0;
 
@@ -37,7 +35,7 @@ public class StepService extends Service implements SensorEventListener{
 
     @Override
     public IBinder onBind(Intent intent) {
-        return binder;
+        return new StepBinder();
     }
 
     @Override
